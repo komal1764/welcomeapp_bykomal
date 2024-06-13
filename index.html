@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Program validation by komal</title>
+	<style>
+		*{font-size:40px;font-family:"Ink Free";}
+		body{background-color:#ff80aa;}
+	</style>
+</head>
+<body>
+<center>
+	<h1>Welcome App</h1>
+	<form onsubmit="check()">
+	<input type="text" placeholder ="enter your name" id="name"/>
+	<br/><br/>
+	<input type="submit"/>
+	</form>
+	<h2 id="msg"/>
+	<script>
+	function check()
+	{
+		event.preventDefault();
+		let name=document.getElementById("name");
+		let msg=document.getElementById("msg");
+		
+		if(name.value=="")
+		{
+			alert("name cannot be blank");
+			msg.innerHTML="";
+			name.focus();
+			return;
+		}
+		if(name.value.trim()=="")
+		{
+			alert("name cannot be blank spaces");
+			msg.innerHTML="";
+			name.focus();
+			return;
+		}
+		if(!name.value.match(/^[a-zA-Z]+$/))
+		{
+			alert("name should contain only aplhabets");
+			msg.innerHTML="";
+			name.focus();
+			return;
+		}
+		
+		
+		let d=new Date();
+		let hr = d.getHours();
+		let ans="";
+		if(hr<12)		ans="Good Morning "+name.value
+		else if(hr<16)		ans="Good Afternoon "+name.value
+		else			ans="Good Evening "+name.value
+		msg.innerHTML = ans;
+	}
+	</script>
+
+</center>
+</body>
+</html>
